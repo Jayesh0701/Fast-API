@@ -36,7 +36,6 @@ templates = Jinja2Templates(directory="templates")
 ################################################################################
 '''We are making connection to MongoDb Database->notes by using below commands'''
 ################################################################################
-conn=MongoClient("mongodb+srv://jayeshrajput0701:JayeshRajput@fastapi.8bh1obd.mongodb.net/")
 
 #Created User model to send data into request 
 class UserDetails(BaseModel):
@@ -80,6 +79,6 @@ def createUser(user_data: UserDetails):
 
 @app.get("/home", response_class=HTMLResponse)
 async def home(request: Request):
-    docs=conn.notes.notes.find_one({})
-    print(docs)
+    #docs=conn.notes.notes.find_one({})
+    #print(docs)
     return templates.TemplateResponse("index.html", {"request": request})
