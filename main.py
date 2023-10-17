@@ -4,7 +4,6 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
-from pymongo import MongoClient
 
 #Creating an Instance of FastAPI
 app = FastAPI()
@@ -82,3 +81,9 @@ async def home(request: Request):
     #docs=conn.notes.notes.find_one({})
     #print(docs)
     return templates.TemplateResponse("index.html", {"request": request})
+############ End of the basics. Now will learn new terms one by one #############
+
+##### Path Parameters #####
+@app.get("/cart/{item_id}")
+async def path_parameter(item_id:int):
+    return {"item_id": item_id}
